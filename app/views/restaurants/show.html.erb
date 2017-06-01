@@ -17,11 +17,14 @@
 
 <p>
   <strong>Address:</strong>
-  <%= @restaurant.address %>
+  <%= @restaurant.address %> <br>
+  <%= image_tag @restaurant.google_map %>
 </p>
+<% if @restaurant.photo.exists? %>
 <p>
   <%= image_tag @restaurant.photo.url(:medium) %>
 </p>
+<% end %>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>

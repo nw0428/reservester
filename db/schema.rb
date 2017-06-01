@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601202438) do
+ActiveRecord::Schema.define(version: 20170601204527) do
 
   create_table "restaurants", force: :cascade do |t|
     t.text "phone_number"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170601202438) do
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
+    t.float "latitude"
+    t.float "longitude"
   end
 
 end
