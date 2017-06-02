@@ -1,0 +1,4 @@
+Discuss bye-bug and pry
+Discuss how partials work
+Use agile talk at a later date
+Don't forget tests
