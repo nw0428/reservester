@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, only: [:edit, :update, :new, :create]
+  before_action :authenticate_owner!, only: [:edit, :update, :new, :create]
+  before_action :require_owner, :only => [:edit, :update, :destroy]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -69,8 +70,10 @@ class RestaurantsController < ApplicationController
       @restaurant = Restaurant.find(params[:id])
     end
 
-    def require_login
-      redirect_to new_owner_session_url if !owner_signed_in?
+    def require_owner
+      unless current_owner && @restaurant.is_owned_by?(current_owner)
+        redirect_to restaurants_url, notice: 'You can\'t edit that restaurant'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

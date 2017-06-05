@@ -10,4 +10,7 @@ class Restaurant < ApplicationRecord
     "https://maps.googleapis.com/maps/api/staticmap?center=#{latitude},#{longitude}&size=300x300&zoom=15&markers=color:red%7C#{latitude},#{longitude}"
   end
 
+  def is_owned_by?(owner)
+    return self.owner == owner
+  end
 end
